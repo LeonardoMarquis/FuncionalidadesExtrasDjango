@@ -1,0 +1,27 @@
+- Cross Site Scripting (xss)
+-- É uma vulnerabilidade que injeta scripts maliciosos para controlar o comportamento de páginas
+Django ja vem com protecao
+
+- Cross Site Request Forgery
+-- {% csrf_token %}
+-- Se o interceptador alterar os dados que o usuario tenta mandar ao servidor, a alteracao de dados
+-- faz o token do envio mudar, e nao vai bater com o token original esperado e vai dar erro
+Django ja vem com protecao
+
+- SQL Injection
+-- Quando o mal intencionado executa codigos SQL com a intenção de alterar os dados ou dar brecha para 
+-- scripts maliciosos
+Django ja vem com protecao
+
+- Suporta Https e TLS
+-- Django ja vem com protecao
+
+- Armazenamento seguro de senhas
+-- Usa algoritmo super poderoso de criptografia, PBKDF2 com SHA256 recomendado pela NIST
+-- Django ja vem com protecao
+
+- Práticas
+
+- Mudar o nome da rota '/admin'
+- Fazer deploy com o 'DEBUG = True' em false
+

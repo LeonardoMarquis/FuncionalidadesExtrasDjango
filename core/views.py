@@ -14,7 +14,7 @@ class DadosJSONView(BaseLineChartView):
     def get_labels(self):
         # meses do ano
         labels = [
-                "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", 
+                "Janeiro", "Fevereiro", "Março", "Abril",   "Maio", "Junho", 
                 "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
         ]
 
