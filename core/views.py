@@ -103,3 +103,13 @@ class GraficoPDFView(View):
         
         return response
 
+# View para parte de login com Facebook
+from django.contrib.auth.mixins import LoginRequiredMixin
+# vamos fazer para que todo mundo que tente acessar o 'a pagina index do login'=home seja redirecionado
+# para a pagina de login, caso nao esteja logado
+
+class HomeView(LoginRequiredMixin, TemplateView):
+    template_name = 'home.html'
+
+class LoginView(TemplateView):
+    template_name = 'login.html'

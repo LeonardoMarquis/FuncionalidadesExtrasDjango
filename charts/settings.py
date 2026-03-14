@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'core',
     'bootstrap4',
     'chartjs',
+    'social_django',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -65,6 +66,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -133,4 +136,40 @@ SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 X_FRAME_OPTIONS = 'DENY'
 
+# para fazermos login com facebook
 
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.facebook.FacebookOAuth2',
+
+    # para se quiser manter a autenticacao padrao do django, aquela do admin, daquele jeito
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_URL = 'logout'
+LOGOUT_REDIRECT_URL = 'login'
+
+# configs para o facebook
+
+SOCIAL_AUTH_RAISE_EXECEPTIONS = False
+# para quando o usuario entrar hoje, e entrar amanha, nao criar outra conta ignorar e dar como login
+SOCIAL_AUTH_FACEBOOK_KEY = 
+SOCIAL_AUTH_FACEBOOK_SECRET = 
+# as duas coisas acima sao das apps criadas no menu de developers do facebook
+# outras redes sociais funcionam do mesmo jeito
+'''
+SOCIAL_AUTH_INSTAGRAM_KEY = 
+SOCIAL_AUTH_INSTAGRAM_SECRET = 
+'''
+# aqui sao coisas que vamos pega do usuario do facebooks
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'user_link']
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
+    'fields': 'id, name, email, picture.type)large, link'
+}
+SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [
+    ('name', 'name'),
+    ('email', 'email'),
+    ('picture', 'picture'),
+    ('link', 'profile_url'),
+]
